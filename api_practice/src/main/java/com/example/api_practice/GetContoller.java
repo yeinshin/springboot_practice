@@ -1,9 +1,6 @@
 package com.example.api_practice;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/get-api")
@@ -29,4 +26,21 @@ public class GetContoller {
         return "Flature";
     }
 
+    /*
+       @PathVariable을 활용한 GET 메서드 구현
+        - 실무 환경에서는 매개변수를 받지 않는 메서드가 거의 쓰이지 않는다.
+        - 웹 통신의 기본 목적은 데이터를 주고받는 것이기 때문에 대부분 매개변수를 받는 메서드를 작성하게 된다.
+        - 매개변수를 받을 때 자주 쓰이는 방법 중 하나는 URL 자체에 값을 담아 요청하는 것.
+        - @GetMapping 어노테이션과 @PathVariable에 지정된 변수의 이름을 동일하게 맞춰야 한다.
+     */
+    @GetMapping(value = "/variable1/{variable}")
+    public String getVarialbe1(@PathVariable String variable){
+        return variable;
+    }
+    
+    // @PathVariable을 활용한 GET 메서드 구현 (@GetMapping 어노테이션의 변수명 지정)
+    @GetMapping(value = "/variable2/{variable}")
+    public String getVariable2(@PathVariable("variable") String var){
+        return var;
+    }
 }
