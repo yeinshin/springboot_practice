@@ -2,6 +2,8 @@ package com.example.api_practice;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("api/v1/get-api")
 public class GetContoller {
@@ -56,4 +58,22 @@ public class GetContoller {
             @RequestParam String organization ){
         return name + " " + email + " " + organization;
     }
+
+    /*
+       @RequestParam과 Map을 조합한 GET 메서드 구현
+        - 값에 상관없이 요청을 받을 수 있음.
+        - 예를 들어, 회원 가입 관련 API에서 사용자는 회원 가입을 하면서 ID 같은 필수 항목이 아닌 취미 같은 선택 항목에 대해서는 값을 기입하지 않는 경우가 있음.
+          이러한 경우에는 매개변수의 항목이 일정하지 않을 수 있어 Map 객체로 받는 것이 효율적.
+     */
+    @GetMapping(value = "/request2")
+    public String getRequestParam2(@RequestParam Map<String, String> param){
+        StringBuilder sb = new StringBuilder();
+        param.entrySet().forEach(map ->{
+            sb.append(map.getKey() + " : " + map.getKey() + "\n");
+        });
+
+        return sb.toString();
+    }
+
+
 }
