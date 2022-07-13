@@ -1,5 +1,6 @@
 package com.example.api_practice.controller;
 
+import com.example.api_practice.dto.MemberDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -29,5 +30,14 @@ public class PostController {
         });
 
         return sb.toString();
+    }
+
+    /*
+       DTO 객체를 활용한 POST API 구현
+        - 요청 메시지에 들어갈 값이 정해져 있다면 DTO 객체를 매개변수로 삼아 작성 가능.
+     */
+    @PostMapping(value = "/member2")
+    public String postMemberDto(@RequestBody MemberDto memberDto){
+        return memberDto.toString();
     }
 }
