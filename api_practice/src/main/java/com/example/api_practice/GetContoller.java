@@ -43,4 +43,17 @@ public class GetContoller {
     public String getVariable2(@PathVariable("variable") String var){
         return var;
     }
+
+    /*
+       @RequestParam을 활용한 GET 메서드 구현
+        - URI에서 '?'를 기준으로 우측에 '{키}={값}' 형태로 구성된 요청을 전송하여 @RequestParam을 활용해서 쿼리 값과 매핑하는 방법
+        - Ex) http://localhost:8080/api/v1/get-api/request1?name=value1&email=value2&organization=value3
+     */
+    @GetMapping(value = "/request1")
+    public String getRequestParam1(
+            @RequestParam String name,
+            @RequestParam String email,
+            @RequestParam String organization ){
+        return name + " " + email + " " + organization;
+    }
 }
