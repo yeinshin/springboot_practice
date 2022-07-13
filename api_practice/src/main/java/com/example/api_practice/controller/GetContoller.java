@@ -1,5 +1,6 @@
 package com.example.api_practice.controller;
 
+import com.example.api_practice.dto.MemberDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -73,6 +74,12 @@ public class GetContoller {
         });
 
         return sb.toString();
+    }
+
+    // DTO 객체를 활용한 GET 메서드 구현
+    @GetMapping(value = "/request3")
+    public String getRequestParam3(MemberDto memberDto){
+        return memberDto.toString();
     }
 
 }
