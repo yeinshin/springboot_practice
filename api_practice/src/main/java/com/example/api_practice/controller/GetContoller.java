@@ -1,4 +1,4 @@
-package com.example.api_practice;
+package com.example.api_practice.controller;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -74,6 +74,5 @@ public class GetContoller {
 
         return sb.toString();
     }
-
 
 }
