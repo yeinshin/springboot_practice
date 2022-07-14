@@ -1,6 +1,9 @@
 package com.example.api_practice.controller;
 
+import com.example.api_practice.dto.MemberDto;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -11,7 +14,8 @@ import java.util.Map;
     - POST API와 비교하면 요청을 받아 실제 데이터베이스에 반영하는 과정(서베스 로직)에서 차이가 있지만 컨트롤러 클래스를 구현하는 방법은 POST API와 거의 동일함.
         -> 리소스를 서버에 전달하기 위해 HTTP Body를 활용해야 하기 때문.
  */
-@RestController("/api/v1/put-api")
+@RestController
+@RequestMapping("/api/v1/put-api")
 public class PutController {
 
     /*
@@ -19,6 +23,7 @@ public class PutController {
         - PUT API는 POST 메서드와 마찬가지로 값을 HTTP Body에 담아 전달함.
         - 서버에서는 이 값을 받기 위해 @RequestBody를 사용함.
      */
+    @PutMapping(value = "/member")
     public String postMember(@RequestBody Map<String, Object> putData){
         StringBuilder sb = new StringBuilder();
 
@@ -28,4 +33,23 @@ public class PutController {
 
         return sb.toString();
     }
+
+    /*
+       DTO 객체를 활용한 PUT 메서드 구현 - String
+        - Response -> Content-Type : text/plain
+     */
+    @PutMapping(value = "/member1")
+    public String postMemberDto1(@RequestBody MemberDto memberDto){
+        return memberDto.toString();
+    }
+
+    /*
+       DTO 객체를 활용한 PUT 메서드 구현 - MemberDto
+        - Response -> Content-Type : application/json
+     */
+    @PutMapping(value = "/member2")
+    public MemberDto postMemberDto2(@RequestBody MemberDto memberDto){
+        return memberDto;
+    }
+
 }
