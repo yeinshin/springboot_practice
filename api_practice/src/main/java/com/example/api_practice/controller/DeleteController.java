@@ -1,9 +1,6 @@
 package com.example.api_practice.controller;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /*
     <GetController>
@@ -21,4 +18,13 @@ public class DeleteController {
         return valiable;
     }
 
+    /*
+       @RequestParam을 활용한 DELETE 메서드 구현
+        - @RequestParam 어노테이션을 통해 쿼리스트링 값도 받을 수 있음.
+        - Ex) http://localhost:8080/api/v1/delete-api/request?email=value
+     */
+    @DeleteMapping(value = "/request1")
+    public String getReqeustParam1(@RequestParam String email){
+        return "e-mail : " + email;
+    }
 }
