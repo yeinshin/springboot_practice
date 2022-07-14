@@ -1,15 +1,16 @@
 package com.springboot.jpa_practice.data.entity;
 
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
 @Entity
 @Table(name = "product")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Product {
 
     @Id
