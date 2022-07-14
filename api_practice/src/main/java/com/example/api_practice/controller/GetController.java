@@ -7,7 +7,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/get-api")
-public class GetContoller {
+public class GetController {
 
     // @RequestMapping을 사용한 메서드 구현
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
